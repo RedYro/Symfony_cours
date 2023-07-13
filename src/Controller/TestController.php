@@ -17,13 +17,15 @@ class TestController extends AbstractController
     public function index(): Response // Chaque action répond avec une "Response"
     {   
         $id = 0;
+        $name = "Yro";
         // Action "index()" retrourne la méthode "render" qui provient de la class "AbstractController"
         return $this->render('test/index.html.twig', [ // "render" prend 2 arguments  : 
             // 1 - Le fichier que l'on veut rendre (gérer par "ce" "Controller")
             // 2 - Les données que l'on veut fournir à cette page
             'controller_name' => 'TestController', // Ici, injecte une variable "controller_name" avec sa valeur : chaîne de caractères "TestController" 
             'day' => 'jeudi',
-            'id' => $id
+            'id' => $id,
+            'name' => $name
         ]);
     }
 

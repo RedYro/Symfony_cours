@@ -1,0 +1,15 @@
+.test-index{
+    background-color: rgb(0, 0, 0); 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column;
+}
+
+.color-1{
+    color: darkred;
+}
+
+.color-2{
+    color: red; 
+}

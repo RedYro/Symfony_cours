@@ -2,14 +2,16 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {% block stylesheets %}
+        {# Ici, création d'un block qui sera appelé sur un autre fichier et où son contenu changera avec ce que l'on souhaite afficher sur la page #}
+        {% block stylesheets %} {# Définition d'un nom dans le bloc #}
+            <link rel="stylesheet" href="{{asset("assets/css/style.css")}}"> {# "asset()" permet de récupérer le "path" de "assets" dans "public" #}
         {% endblock %}
 
         {% block javascripts %}
         {% endblock %}
-        {# commentaire #}
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {# Définition d'une valeur par défaut #}
     </head>
     <body>
         {% block body %}{% endblock %}
