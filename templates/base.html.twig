@@ -3,17 +3,22 @@
     <head>
         <meta charset="UTF-8">
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
         {# Ici, création d'un block qui sera appelé sur un autre fichier et où son contenu changera avec ce que l'on souhaite afficher sur la page #}
         {% block stylesheets %} {# Définition d'un nom dans le bloc #}
             <link rel="stylesheet" href="{{asset("assets/css/style.css")}}"> {# "asset()" permet de récupérer le "path" de "assets" dans "public" #}
-        {% endblock %}
-
-        {% block javascripts %}
         {% endblock %}
         <title>{% block title %}Welcome!{% endblock %}</title>
         {# Définition d'une valeur par défaut #}
     </head>
     <body>
         {% block body %}{% endblock %}
+        
+        {% block javascripts %}
+            <script src="{{asset("assets/js/script.js")}}"></script>
+        {% endblock %}
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
     </body>
 </html>
