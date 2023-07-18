@@ -31,21 +31,11 @@
                                     Catégories
                                 </a>
                                 <ul class="dropdown-menu w-25" aria-labelledby="navbarDropdown">
-                                    <li>
-                                        <a href="#" class="text-light">Catégorie 1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="text-light">Catégorie 2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="text-light">Catégorie 3</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="text-light">Catégorie 5</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="text-light">Catégorie 4</a>
-                                    </li>
+                                    {% for category in categories %}  
+                                        <li>
+                                            <a href="#" class="text-light">{{ category.name }}</a>
+                                        </li>
+                                    {% endfor %}
                                 </ul>
                             </li>
                         </div>
