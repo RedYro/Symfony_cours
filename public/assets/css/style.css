@@ -1,3 +1,7 @@
+*{
+    text-decoration: none !important;
+}
+
 .card{
     border: 1 px solid #ccc;
     box-shadow: 2px 2px 13px #ccc;
