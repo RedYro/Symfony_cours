@@ -1,8 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Article :{% endblock %}
+{% block title %}Article : {{ articleInfo.title }}  {% endblock %}
 
 {% block main %}
-    {{ dump(article) }}
-    
+    {# {{ dump(articleInfo) }} #}
+    <div class="row">
+        <h2 class="text-center mb-5 text-success">Article n°{{ articleInfo.id }}</h2>
+        {# <div class="col-sm-12">
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{ articleInfo.image }}" class="img-fluid rounded-start" alt="Article : {{ articleInfo.title }}">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ articleInfo.title }}</h5>
+                            <p class="card-text">{{ articleInfo.content }}</p>
+                            <h6 class="card-text">Article crée le : <small class="text-body-secondary">{{ articleInfo.createdAt | date("d/m/Y") }}</small></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> #}
+        <div class="card mb-3 p-0">
+            <img src="{{ articleInfo.image }}" class="img-fluid card-img-top" alt="Article : {{ articleInfo.title }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ articleInfo.title }}</h5>
+                <p class="card-text">{{ articleInfo.content }}</p>
+                <h6 class="card-text">Article crée le : <small class="text-body-secondary">{{ articleInfo.createdAt | date("d/m/Y") }}</small></h6>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -14,11 +14,12 @@ class ArticleController extends AbstractController
     #[Route('/article/{id}', name: 'app_article')]
     public function index(ArticlesRepository $articlesRepository, int $id): Response
     {
-        $articleId = $articlesRepository->findById($id);
-        // $articleInfo = $articlesRepository->findAll();
+        $articleId = $articlesRepository->findOneById($id);
+        if(!$articleId){
+            return $this->redirectToRoute('app_home');
+        }
         return $this->render('article/index.html.twig', [
-            'article' => $articleId,
-            // 'articleInfo' => $articleInfo
+            'articleInfo' => $articleId,
         ]);
     }
 
