@@ -28,6 +28,17 @@ class ArticleController extends AbstractController
 
     //------------------------------------------------------------------------------------------------
 
+    #[Route('/category/{name}', name: 'app_home_category')]
+    public function selectCategory(CategoriesRepository $categoriesRepository): Response
+    {
+        $categories = $categoriesRepository->findAll();
+        return $this->render('article/index.html.twig', [
+            'categories' => $categories
+        ]);
+    }
+
+    //------------------------------------------------------------------------------------------------
+
     // "findByTitle" method 
 
     // #[Route('/article/{title}', name: 'app_article')]

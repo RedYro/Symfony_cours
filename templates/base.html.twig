@@ -31,9 +31,10 @@
                                     Catégories
                                 </a>
                                 <ul class="dropdown-menu w-25" aria-labelledby="navbarDropdown">
+                                    {# Avec cette méthode il faut envoyer la variable "categories" dans chaque "controller" au risque d'avoir des erreurs sur les pages où elle n'est pas présente #}
                                     {% for category in categories %}  
                                         <li>
-                                            <a href="#" class="text-light">{{ category.name }}</a>
+                                            <a href="{{ path('app_home_category', {'name':category.name}) }}" class="text-light">{{ category.name }}</a>
                                         </li>
                                     {% endfor %}
                                 </ul>
