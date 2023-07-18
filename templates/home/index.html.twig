@@ -25,7 +25,7 @@
                     {# date() => fonctionnalité Twig, ici sert à formater la date afin de l'afficher #}
                     <h6 class="card-text">Article crée le : <small class="text-body-secondary">{{ article.createdAt | date("d/m/Y") }}</small></h6>
                     {# Le bouton permet d'afficher un seul article #}
-                    <a href="" class="btn"><i class="bi bi-eye-fill fs-4 text-success"></i></a>
+                    <a href="{{ path('app_article', {'id':article.id}) }}" class="btn"><i class="bi bi-eye-fill fs-4 text-success"></i></a>
                 </div>
             </div>
         </div>
