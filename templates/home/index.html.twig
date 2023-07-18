@@ -2,8 +2,33 @@
 
 {% block title %}Accueil{% endblock %}
 
-{% block body %}
-
-    <h2>Accueil</h2>
-
+{% block main %}
+    {# dumpp() = fonction debug #}
+    {# {{ dump(articles) }}  #}
+    <div class="row">
+        <h2 class="text-center mb-5 text-success">Articles</h2>
+        {# Variable "article" déclaré au moment du "for" -> variable de réception, réceptionne un article à chaque tour de boucle #}
+        {# Variable "articles" => tableau déclaré dans le "controller" #}
+        {# Pour chaque "article" dans le tableau "articles", affichage d'une card #}
+        {% for article in articles %} 
+        {# for "row" in "array" #}
+        <div class="col-lg-4 col-sm-12">
+            <div class="card mb-3">
+                <img src="{{ article.image }}" class="card-img-top" alt="Article n°{{ article.id }}" height="250">
+                <div class="card-body">
+                    <h5 class="card-title">{{ article.title }}</h5>
+                    <p class="card-text">{{ article.content | u.truncate(100, '...') }}</p>
+                    {# 'u' => filtre "wrap" Twig pour réduire la taille d'un texte (manipulation de texte) #}
+                    {# Lignes de commandes pour installer le bundle : #}
+                    {# -composer require twig/string-extra #}
+                    {# -composer require twig/extra-bundle #}
+                    {# date() => fonctionnalité Twig, ici sert à formater la date afin de l'afficher #}
+                    <h6 class="card-text">Article crée le : <small class="text-body-secondary">{{ article.createdAt | date("d/m/Y") }}</small></h6>
+                    {# Le bouton permet d'afficher un seul article #}
+                    <a href="" class="btn"><i class="bi bi-eye-fill fs-4 text-success"></i></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 {% endblock %}

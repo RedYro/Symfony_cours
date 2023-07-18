@@ -1,0 +1,12 @@
+.card{
+    border: 1 px solid #ccc;
+    box-shadow: 2px 2px 13px #ccc;
+}
+
+.card a.btn{
+    height: 50px;
+    width: 50px;
+    border: 1 px solid #ccc;
+    box-shadow: 2px 2px 13px #ccc;
+    border-radius: 50%;
+}
