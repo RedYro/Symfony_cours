@@ -31,7 +31,7 @@ class RegisterType extends AbstractType
                     new Length([
                         'min' => 2,
                         'minMessage' => 'Votre prénom doit avoir au minimum {{ limit }} caractères',
-                        'min' => 30,
+                        'max' => 30,
                         'maxMessage' => 'Votre prénom doit avoir au maximum {{ limit }} caractères',
                     ]),
                 ],
@@ -48,7 +48,7 @@ class RegisterType extends AbstractType
                     new Length([
                         'min' => 2,
                         'minMessage' => 'Votre nom doit avoir au minimum {{ limit }} caractères',
-                        'min' => 30,
+                        'max' => 30,
                         'maxMessage' => 'Votre nom doit avoir au maximum {{ limit }} caractères',
                     ]),
                 ],
@@ -75,6 +75,8 @@ class RegisterType extends AbstractType
             //     ],
             // ]) 
 
+            //---------------------------------------------------------------------------------------------------------
+            
             //  2ème méthode sans "mapped = false"
             ->add('password', RepeatedType::class,[
                 'type' => PasswordType::class,
@@ -92,7 +94,7 @@ class RegisterType extends AbstractType
                         new Length([
                             'min' => 6,
                             'minMessage' => 'Votre mot de passe doit contenir au minimum {{ limit }} caractères',
-                            'min' => 30,
+                            'max' => 30,
                             'maxMessage' => 'Votre nom doit avoir au maximum {{ limit }} caractères',
                         ]),
                     ]
@@ -112,7 +114,7 @@ class RegisterType extends AbstractType
             ->add('submit', SubmitType::class, [
                 'label' => 'S\'inscrire',
                 'attr' => [
-                    'class' => 'btn btn-primary',
+                    'class' => 'btn btn-success',
                 ],
             ])
         ;
