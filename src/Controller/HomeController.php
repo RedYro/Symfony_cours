@@ -30,14 +30,16 @@ class HomeController extends AbstractController
     //----------------------------------------------------------------
 
     #[Route('/category/{name}', name: 'app_home_category')]
-    public function selectCategory(CategoriesRepository $categoriesRepository, ArticlesRepository $articlesRepository): Response
+    public function selectCategory(CategoriesRepository $categoriesRepository, ArticlesRepository $articlesRepository, string $name): Response
     {
         $categories = $categoriesRepository->findAll();
         $articles = $articlesRepository->findAll();
-        
+        $category = $categoriesRepository->findOneByName($name);
+
         return $this->render('home/index.html.twig', [
             'categories' => $categories,
-            'articles' => $articles
+            'articles' => $articles,
+            'category' => $category // Variable pour afficher les articles dans chaque catégorie
         ]);
     }
 }
