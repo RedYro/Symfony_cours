@@ -14,7 +14,7 @@ class ArticleController extends AbstractController
 {
     // "findById" method 
 
-    #[Route('/article/{id}', name: 'app_article')]
+    #[Route('/article/{id}', name: 'app_article', requirements: ['id' => "[0-9]+"])]
     public function index(ArticlesRepository $articlesRepository, CategoriesRepository $categoriesRepository, int $id): Response
     {
         $articleId = $articlesRepository->findOneById($id);
