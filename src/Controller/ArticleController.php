@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+use function PHPUnit\Framework\isNan;
+
 class ArticleController extends AbstractController
 {
     // "findById" method 
@@ -17,6 +19,11 @@ class ArticleController extends AbstractController
     {
         $articleId = $articlesRepository->findOneById($id);
         $categories = $categoriesRepository->findAll();
+
+        // if(!is_numeric($id)){
+        //     return $this->redirectToRoute('app_home');
+        // }
+
         if(!$articleId){
             return $this->redirectToRoute('app_home');
         }

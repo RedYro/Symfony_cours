@@ -36,6 +36,10 @@ class HomeController extends AbstractController
         $articles = $articlesRepository->findAll();
         $category = $categoriesRepository->findOneByName($name);
 
+        // if(!$category){
+        //     return $this->redirectToRoute('app_home');
+        // }
+
         return $this->render('home/index.html.twig', [
             'categories' => $categories,
             'articles' => $articles,
