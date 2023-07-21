@@ -2,8 +2,17 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Users;
+use App\Entity\Articles;
+use App\Entity\Profiles;
+use App\Entity\Addresses;
+use App\Entity\Categories;
+use App\Controller\Admin\UsersCrudController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Controller\Admin\ArticlesCrudController;
+use App\Controller\Admin\ProfilesCrudController;
+use App\Controller\Admin\AddressesCrudController;
 use App\Controller\Admin\CategoriesCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -21,6 +30,10 @@ class DashboardController extends AbstractDashboardController
         //
         $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
         return $this->redirect($adminUrlGenerator->setController(CategoriesCrudController::class)->generateUrl());
+        return $this->redirect($adminUrlGenerator->setController(ArticlesCrudController::class)->generateUrl());
+        return $this->redirect($adminUrlGenerator->setController(UsersCrudController::class)->generateUrl());
+        return $this->redirect($adminUrlGenerator->setController(ProfilesCrudController::class)->generateUrl());
+        return $this->redirect($adminUrlGenerator->setController(AddressesCrudController::class)->generateUrl());
 
         // Option 2. You can make your dashboard redirect to different pages depending on the user
         //
@@ -42,7 +55,11 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
+        yield MenuItem::linkToDashboard('Back-office', 'fa fa-home');
+        yield MenuItem::linkToCrud('Catégories', 'fas fa-list', Categories::class);
+        yield MenuItem::linkToCrud('Articles', 'fas fa-list', Articles::class);
+        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-list', Users::class);
+        yield MenuItem::linkToCrud('Profils', 'fas fa-list', Profiles::class);
+        yield MenuItem::linkToCrud('Addresses', 'fas fa-list', Addresses::class);
     }
 }
