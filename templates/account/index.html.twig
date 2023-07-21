@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compte{% endblock %}
+
+{% block main %}
+
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="text-center bg bg-dark text-light p-2 rounded">Compte</h2>
+        </div>
+        {% if app.user.getFirstName() == "Yro" %}
+            <div class="col-sm-12">
+                <h3 class="text-center text-danger m-3">Bonjour {{ app.user.getLastName() ~ " " ~ app.user.getFirstName() }}</h3>
+            </div>
+            <div class="m-auto p-0" style="width: 40%;">
+                <img src="{{ asset("assets/images/Red_Test_v1.png") }}" class="img-fluid card-img-top" alt="Red" width="500" height="800" style="box-shadow: -1px -1px 10px 0px black !important;
+                border-radius: 10px; background-color: black;">
+            </div>
+        {% else %}
+            <div class="col-sm-12">
+                <h3 class="text-center">Bonjour {{ app.user.getFirstName() }}</h3>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock %}

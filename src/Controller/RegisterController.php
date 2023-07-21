@@ -18,6 +18,9 @@ class RegisterController extends AbstractController
     #[Route('/register', name: 'app_register')]
     public function index(CategoriesRepository $categoriesRepository, Request $request, UserPasswordHasherInterface $userPasswordHash, EntityManagerInterface $entityManagerInterface, UsersRepository $usersRepository): Response
     {   
+        if ($this->getUser()) { // Si un "user" est déjà connecté 
+            return $this->redirectToRoute('app_account'); // Retour vers la page "Compte"
+        }
         // Création d'un objet instance de la classe "Users"
         $user = new Users;
         // Création d'un formulaire à l'aide de la méthode "createForm()" le classe "AbstractController" 
@@ -42,6 +45,7 @@ class RegisterController extends AbstractController
                 // Utilisation de la méthode propre à "Doctrine" "persist()" 
                 $entityManagerInterface->persist($user); // "persist()" : fige la data pour la création d'un objet (pas de besoin de cela pour la mise à jour)
                 $entityManagerInterface->flush(); // Exécution et enregistement dans la DB
+                return $this->redirect('app_login');
             }
         }
 
