@@ -19,7 +19,7 @@ class ProfilesCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
+            IdField::new('id')->hideOnForm(),
             IdField::new('user_id'),
             TextField::new('picture'),
             TextEditorField::new('description'),

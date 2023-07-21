@@ -58,8 +58,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Back-office', 'fa fa-home');
         yield MenuItem::linkToCrud('Catégories', 'fas fa-list', Categories::class);
         yield MenuItem::linkToCrud('Articles', 'fas fa-list', Articles::class);
-        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-list', Users::class);
-        yield MenuItem::linkToCrud('Profils', 'fas fa-list', Profiles::class);
-        yield MenuItem::linkToCrud('Addresses', 'fas fa-list', Addresses::class);
+        yield MenuItem::linkToCrud('Utilisateurs', 'fa-solid fa-user', Users::class);
+        yield MenuItem::linkToCrud('Profils', 'fa-regular fa-user', Profiles::class);
+        yield MenuItem::linkToCrud('Addresses', 'fa-solid fa-address-book', Addresses::class);
     }
 }
