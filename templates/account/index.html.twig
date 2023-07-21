@@ -8,7 +8,7 @@
         <div class="col-sm-12">
             <h2 class="text-center bg bg-dark text-light p-2 rounded">Compte</h2>
         </div>
-        {% if app.user.getFirstName() == "Yro" %}
+        {# {% if app.user.getFirstName() == "Yro" %}
             <div class="col-sm-12">
                 <h3 class="text-center text-danger m-3">Bonjour {{ app.user.getLastName() ~ " " ~ app.user.getFirstName() }}</h3>
             </div>
@@ -21,6 +21,84 @@
                 <h3 class="text-center">Bonjour {{ app.user.getFirstName() }}</h3>
             </div>
         {% endif %}
-    </div>
+    </div> #}
+
+    {# ------------------------------------------------------------------------------------------------------------------------------------------- #}
+    {% if app.user.getFirstName() == "Yro" %}
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="{{ asset("assets/images/Red_Logo_Test.png") }}" alt="Red" class="rounded-circle" width="150">
+                            <div class="mt-3">
+                                <h4 class="text-danger">{{ app.user.getLastName() ~ " " ~ app.user.getFirstName() }}</h4>
+                                <p class="text-secondary mb-1">Full Stack Developer</p>
+                                <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                                <a href="" class="btn btn-danger rounded-1 w-100 h-auto">Modifier</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {# ------------------------------------------------------------------------------------------------------------------------------------------- #}
+            <div class="col-md-8">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Full Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{ app.user.getLastName() ~ " " ~ app.user.getFirstName() }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{ app.user.getEmail() }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Date de naissance</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Addresse</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Pseudo</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+
+                            </div>
+                        </div>
+                        <hr>
+                        {# <div class="row">
+                            <div class="col-sm-12">
+                                <a class="btn btn-danger rounded-1 w-25" href="">Edit</a>
+                            </div>
+                        </div> #}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
 
 {% endblock %}
