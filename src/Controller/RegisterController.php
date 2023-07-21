@@ -22,6 +22,7 @@ class RegisterController extends AbstractController
         $user = new Users;
         // Création d'un formulaire à l'aide de la méthode "createForm()" le classe "AbstractController" 
         $form = $this->createForm(RegisterType::class, $user); // 2 paramètres pour la méthode "createForm()" // 1 - classe du formulaire // 2 - objet géré par le formulaire
+        $verif = false; 
         // Le formulaire doit écouter et analyser la requête qui vient de la "vue" et vérifier si il y a un "POST" envoyé ou non
         // Utilisation de l'objet "request" crée par Symfony et qui représente la requête "HTTP" entrante (ici la requête contient les données du formulaire)
         $form->handleRequest($request); // Méthode "handleRequest" => utilisée pour traiter les données soumises par l'utilisateur (ÉTAPE IMPORTANTE)
@@ -29,7 +30,6 @@ class RegisterController extends AbstractController
             $password = $form->get("password")->getData();
             $user->setPassword($userPasswordHash->hashPassword($user, $password)); // "Hash" du "password"
             $usersDB = $usersRepository->findAll();
-            $verif = false; 
             foreach($usersDB as $userDB){
                 if($userDB->getEmail() == $form->get("email")->getData()){
                     $verif = true;
@@ -49,7 +49,7 @@ class RegisterController extends AbstractController
         $categories = $categoriesRepository->findAll();
         return $this->render('register/index.html.twig', [
             'categories' => $categories,
-            'formInscription' => $form->createView() // Passage du formulaire en variable 'template' et création de la 'vue' de ce formulaire
+            'formInscription' => $form->createView(), // Passage du formulaire en variable 'template' et création de la 'vue' de ce formulaire
         ]);
     }
 }
