@@ -23,7 +23,7 @@
             </div>
         </div> #}
         <div class="card mb-3 p-0">
-            <img src="{{ articleInfo.image }}" class="img-fluid card-img-top" alt="Article : {{ articleInfo.title }}">
+            <img src="{{ asset("assets/uploads/images/") ~ articleInfo.image }}" class="img-fluid card-img-top" alt="Article : {{ articleInfo.title }}">
             <div class="card-body">
                 <h5 class="card-title">{{ articleInfo.title }}</h5>
                 <p class="card-text">{{ articleInfo.content }}</p>

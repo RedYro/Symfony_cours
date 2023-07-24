@@ -17,7 +17,7 @@
             </tr>
             <tr>
                 <th>Image</th>
-                <td><img src="{{ article.image }}" alt="Article n°{{ article.id }}" width="300" height="200"> {{ article.image }}</td>
+                <td><img src="{{ asset("assets/uploads/images/") ~ article.image }}" alt="Article n°{{ article.id }}" width="300" height="200"><p>{{ article.image }}</p></td>
             </tr>
             <tr>
                 <th>Content</th>
@@ -34,9 +34,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_articles_crud_index') }}">back to list</a>
+    <a href="{{ path('app_articles_crud_index') }}" class="btn btn-secondary rounded-1 h-auto">Retour à la liste</a>
 
-    <a href="{{ path('app_articles_crud_edit', {'id': article.id}) }}">edit</a>
+    <a href="{{ path('app_articles_crud_edit', {'id': article.id}) }}" class="btn btn-secondary rounded-1 h-auto">Éditer</a>
 
     {{ include('articles_crud/_delete_form.html.twig') }}
 {% endblock %}

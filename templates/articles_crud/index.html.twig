@@ -4,7 +4,7 @@
 
 {% block main %}
     <h2 class="text-center text-success m-5">Articles index</h2>
-    <a href="{{ path('app_articles_crud_new') }}" class="fs-4 bg bg-dark rounded px-2 text-secondary">Créer un nouvel article</a>
+    <a href="{{ path('app_articles_crud_new') }}" class="btn btn-secondary rounded-1 h-auto">Créer un nouvel article</a>
     <div class="row">
         <div class="col-sm-12">
             <table class="table">
@@ -24,13 +24,13 @@
                     <tr>
                         <td>{{ article.id }}</td>
                         <td>{{ article.title | capitalize }}</td>
-                        <td><img src="{{ article.image }}" alt="Article n°{{ article.id }}" width="300" height="200"></td>
+                        <td><img src="{{ asset("assets/uploads/images/") ~ article.image }}" alt="Article n°{{ article.id }}" width="300" height="200"></td>
                         <td>{{ article.content }}</td>
                         <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                         <td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                         <td>
-                            <a href="{{ path('app_articles_crud_show', {'id': article.id}) }}">Voir</a>
-                            <a href="{{ path('app_articles_crud_edit', {'id': article.id}) }}">Éditer</a>
+                            <a href="{{ path('app_articles_crud_show', {'id': article.id}) }}" class="btn btn-secondary rounded-1 h-auto mb-2">Voir</a>
+                            <a href="{{ path('app_articles_crud_edit', {'id': article.id}) }}" class="btn btn-secondary rounded-1 h-auto">Éditer</a>
                         </td>
                     </tr>
                 {% else %}

@@ -15,7 +15,7 @@
             {# for "row" in "array" #}
             <div class="col-lg-4 col-sm-12">
                 <div class="card mb-3">
-                    <img src="{{ article.image }}" class="card-img-top" alt="Article n°{{ article.id }}" height="250">
+                    <img src="{{ asset("assets/uploads/images/") ~ article.image }}" class="card-img-top" alt="Article n°{{ article.id }}" height="250">
                     <div class="card-body">
                         <h5 class="card-title">{{ article.title | capitalize }}</h5>
                         <p class="card-text">{{ article.content | u.truncate(100, '...') }}</p>
@@ -47,7 +47,7 @@
                 <div class="col-sm-12 col-lg-6 mt-5 mb-5">
                     {# <h3 class="text-center">{{ article.title }}</h3> #}
                     <div class="card">
-                        <img src="{{ article.image }}" class="card-img-top" alt="Article n°{{ article.id }}">
+                        <img src="{{ asset("assets/uploads/images/") ~ article.image }}" class="card-img-top" alt="Article n°{{ article.id }}">
                         <div class="card-body">
                             <h3 class="card-title text-center">{{ article.title | capitalize }}</h3>
                             <p class="card-text">{{ article.content }}</p>

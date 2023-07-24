@@ -22,8 +22,8 @@ class CategoriesCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             TextField::new('name'),
             TextEditorField::new('description'),
-            DateTimeField::new('createdAt'),
-            DateTimeField::new('updatedAt'),
+            DateTimeField::new('createdAt')->hideOnForm(),
+            DateTimeField::new('updatedAt')->hideOnForm(),
         ];
     }
 }

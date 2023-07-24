@@ -29,7 +29,7 @@ class UsersCrudController extends AbstractCrudController
                     'Administrateur' => 'ROLE_ADMIN',
                 ] 
             )->allowMultipleChoices(),
-            // TextField::new('password'),
+            TextField::new('password')->hideOnForm(),
         ];
     }
 }
