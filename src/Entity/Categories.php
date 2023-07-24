@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+#[ORM\HasLifecycleCallbacks]
 #[ORM\Entity(repositoryClass: CategoriesRepository::class)]
 class Categories
 {
@@ -34,6 +35,12 @@ class Categories
     public function __construct()
     {
         $this->articles = new ArrayCollection();
+        $this->createdAt = new \DateTimeImmutable();
+    }
+    
+    #[ORM\PreUpdate]
+    public function setUpdatedAtValue(){
+        $this->updatedAt = new \DateTimeImmutable();
     }
 
     public function getId(): ?int

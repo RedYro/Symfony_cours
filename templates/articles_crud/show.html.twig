@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles{% endblock %}
+
+{% block main %}
+    <h2>Articles</h2>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ article.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ article.title }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td><img src="{{ article.image }}" alt="Article n°{{ article.id }}" width="300" height="200"> {{ article.image }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ article.content }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_articles_crud_index') }}">back to list</a>
+
+    <a href="{{ path('app_articles_crud_edit', {'id': article.id}) }}">edit</a>
+
+    {{ include('articles_crud/_delete_form.html.twig') }}
+{% endblock %}

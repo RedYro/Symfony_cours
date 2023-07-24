@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+#[ORM\HasLifecycleCallbacks]
 #[ORM\Entity(repositoryClass: ArticlesRepository::class)]
 class Articles
 {
@@ -34,9 +35,19 @@ class Articles
     #[ORM\ManyToMany(targetEntity: Categories::class, mappedBy: 'articles')]
     private Collection $categories;
 
+    #[ORM\ManyToOne(inversedBy: 'articles')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Users $author = null;
+
     public function __construct()
     {
         $this->categories = new ArrayCollection();
+        $this->createdAt = new \DateTimeImmutable();
+    }
+
+    #[ORM\PreUpdate]
+    public function setUpdatedAtValue(){
+        $this->updatedAt = new \DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -127,6 +138,18 @@ class Articles
         if ($this->categories->removeElement($category)) {
             $category->removeArticle($this);
         }
+
+        return $this;
+    }
+
+    public function getAuthor(): ?Users
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?Users $author): static
+    {
+        $this->author = $author;
 
         return $this;
     }

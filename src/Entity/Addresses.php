@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\AddressesRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+#[ORM\HasLifecycleCallbacks]
 #[ORM\Entity(repositoryClass: AddressesRepository::class)]
 class Addresses
 {
@@ -34,6 +35,16 @@ class Addresses
     #[ORM\ManyToOne(inversedBy: 'addresses')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Users $user = null;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
+
+    #[ORM\PreUpdate]
+    public function setUpdatedAtValue(){
+        $this->updatedAt = new \DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {

@@ -6,6 +6,7 @@ use App\Repository\ProfilesRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+#[ORM\HasLifecycleCallbacks]
 #[ORM\Entity(repositoryClass: ProfilesRepository::class)]
 class Profiles
 {
@@ -32,6 +33,16 @@ class Profiles
     #[ORM\OneToOne(inversedBy: 'profile', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Users $user = null;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
+    
+    #[ORM\PreUpdate]
+    public function setUpdatedAtValue(){
+        $this->updatedAt = new \DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {

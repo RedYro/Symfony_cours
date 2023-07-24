@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles index{% endblock %}
+
+{% block main %}
+    <h2 class="text-center text-success m-5">Articles index</h2>
+    <a href="{{ path('app_articles_crud_new') }}" class="fs-4 bg bg-dark rounded px-2 text-secondary">Créer un nouvel article</a>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Image</th>
+                        <th>Content</th>
+                        <th>CreatedAt</th>
+                        <th>UpdatedAt</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for article in articles %}
+                    <tr>
+                        <td>{{ article.id }}</td>
+                        <td>{{ article.title | capitalize }}</td>
+                        <td><img src="{{ article.image }}" alt="Article n°{{ article.id }}" width="300" height="200"></td>
+                        <td>{{ article.content }}</td>
+                        <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                        <td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                        <td>
+                            <a href="{{ path('app_articles_crud_show', {'id': article.id}) }}">Voir</a>
+                            <a href="{{ path('app_articles_crud_edit', {'id': article.id}) }}">Éditer</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7" class="text-center"><p class="alert alert-warning fw-bold">Vous n'avez pas d'articles</p></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

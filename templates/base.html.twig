@@ -16,7 +16,7 @@
     </head>
     <body>
         <header>
-            <nav class="navbar bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+            <nav class="navbar navbar-expand-lg bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
                 <div class="container-fluid d-flex justify-content-between">
                     <a href="{{path('app_home')}}" class="navbar-brand w-50">
                         <h1>Blog</h1>
@@ -24,7 +24,7 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse w-50" id="navbarNavAltMarkup">
+                    <div class="collapse navbar-collapse w-100 d-flex justify-content-end" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -33,7 +33,7 @@
                                 <ul class="dropdown-menu w-25" aria-labelledby="navbarDropdown">
                                     {# Avec cette méthode il faut envoyer la variable "categories" dans chaque "controller" au risque d'avoir des erreurs sur les pages où elle n'est pas présente #}
                                     {% for category in categories %}  
-                                        <li>
+                                        <li class="m-2">
                                             <a href="{{ path('app_home_category', {'name':category.name}) }}" class="text-light">{{ category.name | capitalize }}</a>
                                         </li>
                                     {% endfor %}
@@ -42,6 +42,7 @@
                             {# "app" = variable globale définie par Symfony, donne automatiquement accès à certaines variables spécifiques à l'application comme un utilisateur connecté, la session, nom de l'environnement actuel, etc.  #}
                             {% if app.user %} {# Si "user" = "login" (sa valeur est l'objet "user" avec ses informations ) #}
                                 <a class="nav-link" href="{{path('app_account')}}">Compte</a>
+                                <a class="nav-link" href="{{path('app_articles_crud_index')}}">Mes articles</a>
                                 <a class="nav-link" href="{{path('app_logout')}}">Se déconnecter</a>
                             {% else %} {# Sinon "user" = "logout" ou non-inscrit (valeur = null) #}
                                 <a class="nav-link" href="{{path('app_register')}}">S'inscrire</a>

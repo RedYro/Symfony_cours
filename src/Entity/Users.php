@@ -41,9 +41,13 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
     private ?Profiles $profile = null;
 
+    #[ORM\OneToMany(mappedBy: 'author', targetEntity: Articles::class)]
+    private Collection $articles;
+
     public function __construct()
     {
         $this->addresses = new ArrayCollection();
+        $this->articles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -183,6 +187,36 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         $this->profile = $profile;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Articles>
+     */
+    public function getArticles(): Collection
+    {
+        return $this->articles;
+    }
+
+    public function addArticle(Articles $article): static
+    {
+        if (!$this->articles->contains($article)) {
+            $this->articles->add($article);
+            $article->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticle(Articles $article): static
+    {
+        if ($this->articles->removeElement($article)) {
+            // set the owning side to null (unless already changed)
+            if ($article->getAuthor() === $this) {
+                $article->setAuthor(null);
+            }
+        }
 
         return $this;
     }
