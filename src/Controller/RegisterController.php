@@ -45,7 +45,7 @@ class RegisterController extends AbstractController
                 // Utilisation de la méthode propre à "Doctrine" "persist()" 
                 $entityManagerInterface->persist($user); // "persist()" : fige la data pour la création d'un objet (pas de besoin de cela pour la mise à jour)
                 $entityManagerInterface->flush(); // Exécution et enregistement dans la DB
-                return $this->redirect('app_login');
+                return $this->redirect('login');
             }
         }
 
