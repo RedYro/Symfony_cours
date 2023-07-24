@@ -24,7 +24,7 @@
                     <tr>
                         <td>{{ article.id }}</td>
                         <td>{{ article.title | capitalize }}</td>
-                        <td><img src="{{ asset("assets/uploads/images/") ~ article.image }}" alt="Article n°{{ article.id }}" width="300" height="200"></td>
+                        <td><img src="{{ asset("assets/uploads/images/") ~ article.image }}" alt="Article n°{{ article.id }}" width="300" height="200" class="rounded"></td>
                         <td>{{ article.content }}</td>
                         <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                         <td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
